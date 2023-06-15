@@ -1,0 +1,25 @@
+{
+    "auto-aliasing": {
+        "datasources": {
+            "external": {
+                "current": "external:index/getExternal:getExternal",
+                "fields": {
+                    "program": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "renames": {
+        "functions": {
+            "external:index/getExternal:getExternal": "external"
+        },
+        "renamedProperties": {
+            "external:index/getExternal:getExternal": {
+                "programs": "program",
+                "workingDir": "working_dir"
+            }
+        }
+    }
+}
