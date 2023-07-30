@@ -7,6 +7,9 @@
 
 # External Resource Provider
 
+This provider is mainly used for ease of converting terraform programs to Pulumi.
+When using standard Pulumi programs, you would not need to use this provider. 
+
 The External resource provider for Pulumi lets you use External resources in your cloud programs.
 To use this package, please [install the Pulumi CLI first](https://www.pulumi.com/docs/install/).
 
