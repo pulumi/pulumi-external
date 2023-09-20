@@ -16,37 +16,35 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
-            }
+            },
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-external/sdk/go/external",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-external/sdk/go/external"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing External cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-external)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-external` repo](https://github.com/pulumi/pulumi-external/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-external` repo](https://github.com/terraform-providers/terraform-provider-external/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
                 "@types/node": "^16.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing External cloud resources.",
-            "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-external)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-external` repo](https://github.com/pulumi/pulumi-external/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-external` repo](https://github.com/terraform-providers/terraform-provider-external/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-external)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-external` repo](https://github.com/pulumi/pulumi-external/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-external` repo](https://github.com/terraform-providers/terraform-provider-external/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-external)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-external` repo](https://github.com/pulumi/pulumi-external/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-external` repo](https://github.com/terraform-providers/terraform-provider-external/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {},
@@ -68,12 +66,10 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.\n"
+                        }
                     },
                     "workingDir": {
-                        "type": "string",
-                        "description": "Working directory of the program. If not supplied, the program will run in the current directory.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -85,8 +81,7 @@
                 "description": "A collection of values returned by getExternal.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The id of the data source. This will always be set to `-`\n"
+                        "type": "string"
                     },
                     "programs": {
                         "type": "array",
@@ -98,19 +93,16 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.\n"
+                        }
                     },
                     "result": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "A map of string values returned from the external program.\n"
+                        }
                     },
                     "workingDir": {
-                        "type": "string",
-                        "description": "Working directory of the program. If not supplied, the program will run in the current directory.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",

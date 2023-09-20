@@ -31,19 +31,12 @@ namespace Pulumi.External
 
         [Input("query")]
         private Dictionary<string, string>? _query;
-
-        /// <summary>
-        /// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-        /// </summary>
         public Dictionary<string, string> Query
         {
             get => _query ?? (_query = new Dictionary<string, string>());
             set => _query = value;
         }
 
-        /// <summary>
-        /// Working directory of the program. If not supplied, the program will run in the current directory.
-        /// </summary>
         [Input("workingDir")]
         public string? WorkingDir { get; set; }
 
@@ -65,19 +58,12 @@ namespace Pulumi.External
 
         [Input("query")]
         private InputMap<string>? _query;
-
-        /// <summary>
-        /// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-        /// </summary>
         public InputMap<string> Query
         {
             get => _query ?? (_query = new InputMap<string>());
             set => _query = value;
         }
 
-        /// <summary>
-        /// Working directory of the program. If not supplied, the program will run in the current directory.
-        /// </summary>
         [Input("workingDir")]
         public Input<string>? WorkingDir { get; set; }
 
@@ -91,22 +77,10 @@ namespace Pulumi.External
     [OutputType]
     public sealed class GetExternalResult
     {
-        /// <summary>
-        /// The id of the data source. This will always be set to `-`
-        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Programs;
-        /// <summary>
-        /// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Query;
-        /// <summary>
-        /// A map of string values returned from the external program.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Result;
-        /// <summary>
-        /// Working directory of the program. If not supplied, the program will run in the current directory.
-        /// </summary>
         public readonly string? WorkingDir;
 
         [OutputConstructor]

@@ -19,13 +19,7 @@ export function getExternal(args: GetExternalArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetExternalArgs {
     programs: string[];
-    /**
-     * A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-     */
     query?: {[key: string]: string};
-    /**
-     * Working directory of the program. If not supplied, the program will run in the current directory.
-     */
     workingDir?: string;
 }
 
@@ -33,22 +27,10 @@ export interface GetExternalArgs {
  * A collection of values returned by getExternal.
  */
 export interface GetExternalResult {
-    /**
-     * The id of the data source. This will always be set to `-`
-     */
     readonly id: string;
     readonly programs: string[];
-    /**
-     * A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-     */
     readonly query?: {[key: string]: string};
-    /**
-     * A map of string values returned from the external program.
-     */
     readonly result: {[key: string]: string};
-    /**
-     * Working directory of the program. If not supplied, the program will run in the current directory.
-     */
     readonly workingDir?: string;
 }
 export function getExternalOutput(args: GetExternalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalResult> {
@@ -60,12 +42,6 @@ export function getExternalOutput(args: GetExternalOutputArgs, opts?: pulumi.Inv
  */
 export interface GetExternalOutputArgs {
     programs: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-     */
     query?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Working directory of the program. If not supplied, the program will run in the current directory.
-     */
     workingDir?: pulumi.Input<string>;
 }

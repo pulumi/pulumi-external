@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -41,9 +41,6 @@ class GetExternalResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The id of the data source. This will always be set to `-`
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -54,25 +51,16 @@ class GetExternalResult:
     @property
     @pulumi.getter
     def query(self) -> Optional[Mapping[str, str]]:
-        """
-        A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter
     def result(self) -> Mapping[str, str]:
-        """
-        A map of string values returned from the external program.
-        """
         return pulumi.get(self, "result")
 
     @property
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> Optional[str]:
-        """
-        Working directory of the program. If not supplied, the program will run in the current directory.
-        """
         return pulumi.get(self, "working_dir")
 
 
@@ -95,9 +83,6 @@ def get_external(programs: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param Mapping[str, str] query: A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-    :param str working_dir: Working directory of the program. If not supplied, the program will run in the current directory.
     """
     __args__ = dict()
     __args__['programs'] = programs
@@ -107,11 +92,11 @@ def get_external(programs: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('external:index/getExternal:getExternal', __args__, opts=opts, typ=GetExternalResult).value
 
     return AwaitableGetExternalResult(
-        id=__ret__.id,
-        programs=__ret__.programs,
-        query=__ret__.query,
-        result=__ret__.result,
-        working_dir=__ret__.working_dir)
+        id=pulumi.get(__ret__, 'id'),
+        programs=pulumi.get(__ret__, 'programs'),
+        query=pulumi.get(__ret__, 'query'),
+        result=pulumi.get(__ret__, 'result'),
+        working_dir=pulumi.get(__ret__, 'working_dir'))
 
 
 @_utilities.lift_output_func(get_external)
@@ -121,8 +106,5 @@ def get_external_output(programs: Optional[pulumi.Input[Sequence[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param Mapping[str, str] query: A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
-    :param str working_dir: Working directory of the program. If not supplied, the program will run in the current directory.
     """
     ...
