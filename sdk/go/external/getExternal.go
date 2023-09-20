@@ -24,18 +24,24 @@ func GetExternal(ctx *pulumi.Context, args *GetExternalArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getExternal.
 type GetExternalArgs struct {
-	Programs   []string          `pulumi:"programs"`
-	Query      map[string]string `pulumi:"query"`
-	WorkingDir *string           `pulumi:"workingDir"`
+	Programs []string `pulumi:"programs"`
+	// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+	Query map[string]string `pulumi:"query"`
+	// Working directory of the program. If not supplied, the program will run in the current directory.
+	WorkingDir *string `pulumi:"workingDir"`
 }
 
 // A collection of values returned by getExternal.
 type GetExternalResult struct {
-	Id         string            `pulumi:"id"`
-	Programs   []string          `pulumi:"programs"`
-	Query      map[string]string `pulumi:"query"`
-	Result     map[string]string `pulumi:"result"`
-	WorkingDir *string           `pulumi:"workingDir"`
+	// The id of the data source. This will always be set to `-`
+	Id       string   `pulumi:"id"`
+	Programs []string `pulumi:"programs"`
+	// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+	Query map[string]string `pulumi:"query"`
+	// A map of string values returned from the external program.
+	Result map[string]string `pulumi:"result"`
+	// Working directory of the program. If not supplied, the program will run in the current directory.
+	WorkingDir *string `pulumi:"workingDir"`
 }
 
 func GetExternalOutput(ctx *pulumi.Context, args GetExternalOutputArgs, opts ...pulumi.InvokeOption) GetExternalResultOutput {
@@ -53,9 +59,11 @@ func GetExternalOutput(ctx *pulumi.Context, args GetExternalOutputArgs, opts ...
 
 // A collection of arguments for invoking getExternal.
 type GetExternalOutputArgs struct {
-	Programs   pulumi.StringArrayInput `pulumi:"programs"`
-	Query      pulumi.StringMapInput   `pulumi:"query"`
-	WorkingDir pulumi.StringPtrInput   `pulumi:"workingDir"`
+	Programs pulumi.StringArrayInput `pulumi:"programs"`
+	// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+	Query pulumi.StringMapInput `pulumi:"query"`
+	// Working directory of the program. If not supplied, the program will run in the current directory.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
 func (GetExternalOutputArgs) ElementType() reflect.Type {
@@ -83,6 +91,7 @@ func (o GetExternalResultOutput) ToOutput(ctx context.Context) pulumix.Output[Ge
 	}
 }
 
+// The id of the data source. This will always be set to `-`
 func (o GetExternalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -91,14 +100,17 @@ func (o GetExternalResultOutput) Programs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExternalResult) []string { return v.Programs }).(pulumi.StringArrayOutput)
 }
 
+// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
 func (o GetExternalResultOutput) Query() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetExternalResult) map[string]string { return v.Query }).(pulumi.StringMapOutput)
 }
 
+// A map of string values returned from the external program.
 func (o GetExternalResultOutput) Result() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetExternalResult) map[string]string { return v.Result }).(pulumi.StringMapOutput)
 }
 
+// Working directory of the program. If not supplied, the program will run in the current directory.
 func (o GetExternalResultOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalResult) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }

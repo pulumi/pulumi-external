@@ -24,16 +24,32 @@ public final class GetExternalArgs extends com.pulumi.resources.InvokeArgs {
         return this.programs;
     }
 
+    /**
+     * A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+     * 
+     */
     @Import(name="query")
     private @Nullable Output<Map<String,String>> query;
 
+    /**
+     * @return A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+     * 
+     */
     public Optional<Output<Map<String,String>>> query() {
         return Optional.ofNullable(this.query);
     }
 
+    /**
+     * Working directory of the program. If not supplied, the program will run in the current directory.
+     * 
+     */
     @Import(name="workingDir")
     private @Nullable Output<String> workingDir;
 
+    /**
+     * @return Working directory of the program. If not supplied, the program will run in the current directory.
+     * 
+     */
     public Optional<Output<String>> workingDir() {
         return Optional.ofNullable(this.workingDir);
     }
@@ -77,20 +93,44 @@ public final class GetExternalArgs extends com.pulumi.resources.InvokeArgs {
             return programs(List.of(programs));
         }
 
+        /**
+         * @param query A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(@Nullable Output<Map<String,String>> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(Map<String,String> query) {
             return query(Output.of(query));
         }
 
+        /**
+         * @param workingDir Working directory of the program. If not supplied, the program will run in the current directory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workingDir(@Nullable Output<String> workingDir) {
             $.workingDir = workingDir;
             return this;
         }
 
+        /**
+         * @param workingDir Working directory of the program. If not supplied, the program will run in the current directory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workingDir(String workingDir) {
             return workingDir(Output.of(workingDir));
         }

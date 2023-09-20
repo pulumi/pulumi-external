@@ -23,16 +23,32 @@ public final class GetExternalPlainArgs extends com.pulumi.resources.InvokeArgs 
         return this.programs;
     }
 
+    /**
+     * A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+     * 
+     */
     @Import(name="query")
     private @Nullable Map<String,String> query;
 
+    /**
+     * @return A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+     * 
+     */
     public Optional<Map<String,String>> query() {
         return Optional.ofNullable(this.query);
     }
 
+    /**
+     * Working directory of the program. If not supplied, the program will run in the current directory.
+     * 
+     */
     @Import(name="workingDir")
     private @Nullable String workingDir;
 
+    /**
+     * @return Working directory of the program. If not supplied, the program will run in the current directory.
+     * 
+     */
     public Optional<String> workingDir() {
         return Optional.ofNullable(this.workingDir);
     }
@@ -72,11 +88,23 @@ public final class GetExternalPlainArgs extends com.pulumi.resources.InvokeArgs 
             return programs(List.of(programs));
         }
 
+        /**
+         * @param query A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(@Nullable Map<String,String> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param workingDir Working directory of the program. If not supplied, the program will run in the current directory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workingDir(@Nullable String workingDir) {
             $.workingDir = workingDir;
             return this;

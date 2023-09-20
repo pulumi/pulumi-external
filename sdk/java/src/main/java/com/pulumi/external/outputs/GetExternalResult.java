@@ -13,25 +13,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalResult {
+    /**
+     * @return The id of the data source. This will always be set to `-`
+     * 
+     */
     private String id;
     private List<String> programs;
+    /**
+     * @return A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+     * 
+     */
     private @Nullable Map<String,String> query;
+    /**
+     * @return A map of string values returned from the external program.
+     * 
+     */
     private Map<String,String> result;
+    /**
+     * @return Working directory of the program. If not supplied, the program will run in the current directory.
+     * 
+     */
     private @Nullable String workingDir;
 
     private GetExternalResult() {}
+    /**
+     * @return The id of the data source. This will always be set to `-`
+     * 
+     */
     public String id() {
         return this.id;
     }
     public List<String> programs() {
         return this.programs;
     }
+    /**
+     * @return A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
+     * 
+     */
     public Map<String,String> query() {
         return this.query == null ? Map.of() : this.query;
     }
+    /**
+     * @return A map of string values returned from the external program.
+     * 
+     */
     public Map<String,String> result() {
         return this.result;
     }
+    /**
+     * @return Working directory of the program. If not supplied, the program will run in the current directory.
+     * 
+     */
     public Optional<String> workingDir() {
         return Optional.ofNullable(this.workingDir);
     }

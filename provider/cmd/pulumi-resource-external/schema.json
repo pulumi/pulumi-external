@@ -66,10 +66,12 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.\n"
                     },
                     "workingDir": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Working directory of the program. If not supplied, the program will run in the current directory.\n"
                     }
                 },
                 "type": "object",
@@ -81,7 +83,8 @@
                 "description": "A collection of values returned by getExternal.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The id of the data source. This will always be set to `-`\n"
                     },
                     "programs": {
                         "type": "array",
@@ -93,16 +96,19 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.\n"
                     },
                     "result": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A map of string values returned from the external program.\n"
                     },
                     "workingDir": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Working directory of the program. If not supplied, the program will run in the current directory.\n"
                     }
                 },
                 "type": "object",
