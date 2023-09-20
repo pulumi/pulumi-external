@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -107,11 +107,11 @@ def get_external(programs: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('external:index/getExternal:getExternal', __args__, opts=opts, typ=GetExternalResult).value
 
     return AwaitableGetExternalResult(
-        id=__ret__.id,
-        programs=__ret__.programs,
-        query=__ret__.query,
-        result=__ret__.result,
-        working_dir=__ret__.working_dir)
+        id=pulumi.get(__ret__, 'id'),
+        programs=pulumi.get(__ret__, 'programs'),
+        query=pulumi.get(__ret__, 'query'),
+        result=pulumi.get(__ret__, 'result'),
+        working_dir=pulumi.get(__ret__, 'working_dir'))
 
 
 @_utilities.lift_output_func(get_external)
