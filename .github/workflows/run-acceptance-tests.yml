@@ -252,6 +252,7 @@ jobs:
       ! cancelled()
     needs:
     - test
+    - license_check
     runs-on: ubuntu-latest
     steps:
     - name: Workflow is not a success
@@ -367,6 +368,20 @@ jobs:
         - dotnet
         - go
         - java
+
+  license_check:
+    name: License Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ env.PR_COMMIT_SHA }}
+    - name: Install Go
+      uses: actions/setup-go@v4
+    - uses: pulumi/license-check-action@main
+      with:
+        module-path: provider
 name: run-acceptance-tests
 on:
   pull_request:
