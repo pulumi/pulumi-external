@@ -20,6 +20,9 @@ import (
 	"os"
 	"path"
 
+	// Testing that the license check will fail on a BUSL license.
+	_ "github.com/hashicorp/terraform/version"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
