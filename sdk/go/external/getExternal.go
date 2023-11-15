@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-external/sdk/go/external/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetExternal(ctx *pulumi.Context, args *GetExternalArgs, opts ...pulumi.InvokeOption) (*GetExternalResult, error) {
@@ -83,12 +82,6 @@ func (o GetExternalResultOutput) ToGetExternalResultOutput() GetExternalResultOu
 
 func (o GetExternalResultOutput) ToGetExternalResultOutputWithContext(ctx context.Context) GetExternalResultOutput {
 	return o
-}
-
-func (o GetExternalResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetExternalResult] {
-	return pulumix.Output[GetExternalResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the data source. This will always be set to `-`
