@@ -121,13 +121,13 @@ public final class GetExternalResult {
             return this;
         }
         public GetExternalResult build() {
-            final var o = new GetExternalResult();
-            o.id = id;
-            o.programs = programs;
-            o.query = query;
-            o.result = result;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new GetExternalResult();
+            _resultValue.id = id;
+            _resultValue.programs = programs;
+            _resultValue.query = query;
+            _resultValue.result = result;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }
