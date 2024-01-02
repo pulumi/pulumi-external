@@ -5,6 +5,7 @@ package com.pulumi.external.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -136,7 +137,9 @@ public final class GetExternalArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetExternalArgs build() {
-            $.programs = Objects.requireNonNull($.programs, "expected parameter 'programs' to be non-null");
+            if ($.programs == null) {
+                throw new MissingRequiredPropertyException("GetExternalArgs", "programs");
+            }
             return $;
         }
     }
