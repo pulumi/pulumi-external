@@ -4,6 +4,7 @@
 package com.pulumi.external.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -94,12 +95,18 @@ public final class GetExternalResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExternalResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder programs(List<String> programs) {
-            this.programs = Objects.requireNonNull(programs);
+            if (programs == null) {
+              throw new MissingRequiredPropertyException("GetExternalResult", "programs");
+            }
+            this.programs = programs;
             return this;
         }
         public Builder programs(String... programs) {
@@ -107,16 +114,21 @@ public final class GetExternalResult {
         }
         @CustomType.Setter
         public Builder query(@Nullable Map<String,String> query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder result(Map<String,String> result) {
-            this.result = Objects.requireNonNull(result);
+            if (result == null) {
+              throw new MissingRequiredPropertyException("GetExternalResult", "result");
+            }
+            this.result = result;
             return this;
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }
