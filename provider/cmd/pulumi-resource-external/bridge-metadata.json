@@ -11,6 +11,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "functions": {
             "external:index/getExternal:getExternal": "external"
