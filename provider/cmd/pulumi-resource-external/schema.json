@@ -85,40 +85,40 @@
                 "description": "A collection of values returned by getExternal.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The id of the data source. This will always be set to `-`\n"
+                        "description": "The id of the data source. This will always be set to `-`\n",
+                        "type": "string"
                     },
                     "programs": {
-                        "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "type": "array"
                     },
                     "query": {
-                        "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.\n"
+                        "description": "A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.\n",
+                        "type": "object"
                     },
                     "result": {
-                        "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of string values returned from the external program.\n"
+                        "description": "A map of string values returned from the external program.\n",
+                        "type": "object"
                     },
                     "workingDir": {
-                        "type": "string",
-                        "description": "Working directory of the program. If not supplied, the program will run in the current directory.\n"
+                        "description": "Working directory of the program. If not supplied, the program will run in the current directory.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "id",
                     "programs",
                     "result"
-                ]
+                ],
+                "type": "object"
             }
         }
     }
