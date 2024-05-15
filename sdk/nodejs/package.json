@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/external",
-    "version": "${VERSION}",
+    "version": "0.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing External cloud resources.",
     "keywords": [
         "pulumi",
@@ -21,6 +21,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "external"
+        "name": "external",
+        "version": "0.0.0-alpha.0+dev"
     }
 }
