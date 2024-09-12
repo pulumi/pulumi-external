@@ -1,3 +1,9 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <me@iwahbe.com>
+Date: Thu, 12 Sep 2024 20:06:09 +0200
+Subject: [PATCH] Add shim
+
+
 diff --git a/pulumi-shim/pf.go b/pulumi-shim/pf.go
 new file mode 100644
 index 0000000..b591c41
