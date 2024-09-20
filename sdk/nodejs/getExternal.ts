@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getExternal(args: GetExternalArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("external:index/getExternal:getExternal", {
         "programs": args.programs,
@@ -52,7 +51,12 @@ export interface GetExternalResult {
     readonly workingDir?: string;
 }
 export function getExternalOutput(args: GetExternalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalResult> {
-    return pulumi.output(args).apply((a: any) => getExternal(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("external:index/getExternal:getExternal", {
+        "programs": args.programs,
+        "query": args.query,
+        "workingDir": args.workingDir,
+    }, opts);
 }
 
 /**

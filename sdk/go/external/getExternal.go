@@ -45,14 +45,20 @@ type GetExternalResult struct {
 
 func GetExternalOutput(ctx *pulumi.Context, args GetExternalOutputArgs, opts ...pulumi.InvokeOption) GetExternalResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetExternalResult, error) {
+		ApplyT(func(v interface{}) (GetExternalResultOutput, error) {
 			args := v.(GetExternalArgs)
-			r, err := GetExternal(ctx, &args, opts...)
-			var s GetExternalResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetExternalResult
+			secret, err := ctx.InvokePackageRaw("external:index/getExternal:getExternal", args, &rv, "", opts...)
+			if err != nil {
+				return GetExternalResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetExternalResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetExternalResultOutput), nil
+			}
+			return output, nil
 		}).(GetExternalResultOutput)
 }
 
