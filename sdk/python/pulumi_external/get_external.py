@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -112,9 +117,6 @@ def get_external(programs: Optional[Sequence[str]] = None,
         query=pulumi.get(__ret__, 'query'),
         result=pulumi.get(__ret__, 'result'),
         working_dir=pulumi.get(__ret__, 'working_dir'))
-
-
-@_utilities.lift_output_func(get_external)
 def get_external_output(programs: Optional[pulumi.Input[Sequence[str]]] = None,
                         query: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         working_dir: Optional[pulumi.Input[Optional[str]]] = None,
@@ -125,4 +127,15 @@ def get_external_output(programs: Optional[pulumi.Input[Sequence[str]]] = None,
     :param Mapping[str, str] query: A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
     :param str working_dir: Working directory of the program. If not supplied, the program will run in the current directory.
     """
-    ...
+    __args__ = dict()
+    __args__['programs'] = programs
+    __args__['query'] = query
+    __args__['workingDir'] = working_dir
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('external:index/getExternal:getExternal', __args__, opts=opts, typ=GetExternalResult)
+    return __ret__.apply(lambda __response__: GetExternalResult(
+        id=pulumi.get(__response__, 'id'),
+        programs=pulumi.get(__response__, 'programs'),
+        query=pulumi.get(__response__, 'query'),
+        result=pulumi.get(__response__, 'result'),
+        working_dir=pulumi.get(__response__, 'working_dir')))
