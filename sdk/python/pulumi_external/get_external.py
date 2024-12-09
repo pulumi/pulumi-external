@@ -120,7 +120,7 @@ def get_external(programs: Optional[Sequence[str]] = None,
 def get_external_output(programs: Optional[pulumi.Input[Sequence[str]]] = None,
                         query: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         working_dir: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -131,7 +131,7 @@ def get_external_output(programs: Optional[pulumi.Input[Sequence[str]]] = None,
     __args__['programs'] = programs
     __args__['query'] = query
     __args__['workingDir'] = working_dir
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('external:index/getExternal:getExternal', __args__, opts=opts, typ=GetExternalResult)
     return __ret__.apply(lambda __response__: GetExternalResult(
         id=pulumi.get(__response__, 'id'),
