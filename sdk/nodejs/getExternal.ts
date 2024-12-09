@@ -50,7 +50,7 @@ export interface GetExternalResult {
      */
     readonly workingDir?: string;
 }
-export function getExternalOutput(args: GetExternalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalResult> {
+export function getExternalOutput(args: GetExternalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("external:index/getExternal:getExternal", {
         "programs": args.programs,
