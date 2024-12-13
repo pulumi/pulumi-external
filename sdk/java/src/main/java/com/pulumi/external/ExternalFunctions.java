@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.external.Utilities;
 import com.pulumi.external.inputs.GetExternalArgs;
 import com.pulumi.external.inputs.GetExternalPlainArgs;
@@ -21,6 +22,9 @@ public final class ExternalFunctions {
         return getExternalPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetExternalResult> getExternal(GetExternalArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("external:index/getExternal:getExternal", TypeShape.of(GetExternalResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetExternalResult> getExternal(GetExternalArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("external:index/getExternal:getExternal", TypeShape.of(GetExternalResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetExternalResult> getExternalPlain(GetExternalPlainArgs args, InvokeOptions options) {

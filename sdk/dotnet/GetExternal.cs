@@ -16,6 +16,9 @@ namespace Pulumi.External
 
         public static Output<GetExternalResult> Invoke(GetExternalInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalResult>("external:index/getExternal:getExternal", args ?? new GetExternalInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetExternalResult> Invoke(GetExternalInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalResult>("external:index/getExternal:getExternal", args ?? new GetExternalInvokeArgs(), options.WithDefaults());
     }
 
 
