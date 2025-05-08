@@ -10,10 +10,8 @@ export const getExternal: typeof import("./getExternal").getExternal = null as a
 export const getExternalOutput: typeof import("./getExternal").getExternalOutput = null as any;
 utilities.lazyLoad(exports, ["getExternal","getExternalOutput"], () => require("./getExternal"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 pulumi.runtime.registerResourcePackage("external", {
     version: utilities.getVersion(),
