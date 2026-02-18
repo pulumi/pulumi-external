@@ -17,9 +17,17 @@ public final class GetExternalPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetExternalPlainArgs Empty = new GetExternalPlainArgs();
 
+    /**
+     * A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+     * 
+     */
     @Import(name="programs", required=true)
     private List<String> programs;
 
+    /**
+     * @return A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+     * 
+     */
     public List<String> programs() {
         return this.programs;
     }
@@ -80,11 +88,23 @@ public final class GetExternalPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetExternalPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param programs A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder programs(List<String> programs) {
             $.programs = programs;
             return this;
         }
 
+        /**
+         * @param programs A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder programs(String... programs) {
             return programs(List.of(programs));
         }

@@ -15,18 +15,108 @@ import com.pulumi.external.outputs.GetExternalResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ExternalFunctions {
+    /**
+     * The `external.getExternal` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+     * 
+     * **Warning** This mechanism is provided as an &#34;escape hatch&#34; for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.
+     * 
+     * **Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.
+     * 
+     * ## Processing JSON in shell scripts
+     * 
+     * Since the external data source protocol uses JSON, it is recommended to use
+     * the utility [`jq`](https://stedolan.github.io/jq/) to translate to and from
+     * JSON in a robust way when implementing a data source in a shell scripting
+     * language.
+     * 
+     * The following example shows some input/output boilerplate code for a
+     * data source implemented in bash:
+     * 
+     */
     public static Output<GetExternalResult> getExternal(GetExternalArgs args) {
         return getExternal(args, InvokeOptions.Empty);
     }
+    /**
+     * The `external.getExternal` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+     * 
+     * **Warning** This mechanism is provided as an &#34;escape hatch&#34; for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.
+     * 
+     * **Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.
+     * 
+     * ## Processing JSON in shell scripts
+     * 
+     * Since the external data source protocol uses JSON, it is recommended to use
+     * the utility [`jq`](https://stedolan.github.io/jq/) to translate to and from
+     * JSON in a robust way when implementing a data source in a shell scripting
+     * language.
+     * 
+     * The following example shows some input/output boilerplate code for a
+     * data source implemented in bash:
+     * 
+     */
     public static CompletableFuture<GetExternalResult> getExternalPlain(GetExternalPlainArgs args) {
         return getExternalPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * The `external.getExternal` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+     * 
+     * **Warning** This mechanism is provided as an &#34;escape hatch&#34; for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.
+     * 
+     * **Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.
+     * 
+     * ## Processing JSON in shell scripts
+     * 
+     * Since the external data source protocol uses JSON, it is recommended to use
+     * the utility [`jq`](https://stedolan.github.io/jq/) to translate to and from
+     * JSON in a robust way when implementing a data source in a shell scripting
+     * language.
+     * 
+     * The following example shows some input/output boilerplate code for a
+     * data source implemented in bash:
+     * 
+     */
     public static Output<GetExternalResult> getExternal(GetExternalArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("external:index/getExternal:getExternal", TypeShape.of(GetExternalResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The `external.getExternal` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+     * 
+     * **Warning** This mechanism is provided as an &#34;escape hatch&#34; for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.
+     * 
+     * **Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.
+     * 
+     * ## Processing JSON in shell scripts
+     * 
+     * Since the external data source protocol uses JSON, it is recommended to use
+     * the utility [`jq`](https://stedolan.github.io/jq/) to translate to and from
+     * JSON in a robust way when implementing a data source in a shell scripting
+     * language.
+     * 
+     * The following example shows some input/output boilerplate code for a
+     * data source implemented in bash:
+     * 
+     */
     public static Output<GetExternalResult> getExternal(GetExternalArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("external:index/getExternal:getExternal", TypeShape.of(GetExternalResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The `external.getExternal` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+     * 
+     * **Warning** This mechanism is provided as an &#34;escape hatch&#34; for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.
+     * 
+     * **Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.
+     * 
+     * ## Processing JSON in shell scripts
+     * 
+     * Since the external data source protocol uses JSON, it is recommended to use
+     * the utility [`jq`](https://stedolan.github.io/jq/) to translate to and from
+     * JSON in a robust way when implementing a data source in a shell scripting
+     * language.
+     * 
+     * The following example shows some input/output boilerplate code for a
+     * data source implemented in bash:
+     * 
+     */
     public static CompletableFuture<GetExternalResult> getExternalPlain(GetExternalPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("external:index/getExternal:getExternal", TypeShape.of(GetExternalResult.class), args, Utilities.withVersion(options));
     }
