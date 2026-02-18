@@ -56,6 +56,7 @@
     },
     "functions": {
         "external:index/getExternal:getExternal": {
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`external.getExternal`\" pulumi-lang-dotnet=\"`external.getExternal`\" pulumi-lang-go=\"`getExternal`\" pulumi-lang-python=\"`get_external`\" pulumi-lang-yaml=\"`external.getExternal`\" pulumi-lang-java=\"`external.getExternal`\"\u003e`external.getExternal`\u003c/span\u003e data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.\n\n**Warning** This mechanism is provided as an \"escape hatch\" for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.\n\n**Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.\n\n## Processing JSON in shell scripts\n\nSince the external data source protocol uses JSON, it is recommended to use\nthe utility [\u003cspan pulumi-lang-nodejs=\"`jq`\" pulumi-lang-dotnet=\"`Jq`\" pulumi-lang-go=\"`jq`\" pulumi-lang-python=\"`jq`\" pulumi-lang-yaml=\"`jq`\" pulumi-lang-java=\"`jq`\"\u003e`jq`\u003c/span\u003e](https://stedolan.github.io/jq/) to translate to and from\nJSON in a robust way when implementing a data source in a shell scripting\nlanguage.\n\nThe following example shows some input/output boilerplate code for a\ndata source implemented in bash:\n\n```shell\n#!/bin/bash\n\n# Exit if any of the intermediate steps fail\nset -e\n\n# Extract \"foo\" and \"baz\" arguments from the input into\n# FOO and BAZ shell variables.\n# jq will ensure that the values are properly quoted\n# and escaped for consumption by the shell.\neval \"$(jq -r '@sh \"FOO=\\(.foo) BAZ=\\(.baz)\"')\"\n\n# Placeholder for whatever data-fetching logic your script implements\nFOOBAZ=\"$FOO $BAZ\"\n\n# Safely produce a JSON object containing the result value.\n# jq will ensure that the value is properly quoted\n# and escaped to produce a valid JSON string.\njq -n --arg foobaz \"$FOOBAZ\" '{\"foobaz\":$foobaz}'\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getExternal.\n",
                 "properties": {
@@ -63,7 +64,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.\n"
                     },
                     "query": {
                         "type": "object",
@@ -90,6 +92,7 @@
                         "type": "string"
                     },
                     "programs": {
+                        "description": "A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.\n",
                         "items": {
                             "type": "string"
                         },
