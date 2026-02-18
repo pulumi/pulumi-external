@@ -19,6 +19,10 @@ public final class GetExternalResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+     * 
+     */
     private List<String> programs;
     /**
      * @return A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
@@ -44,6 +48,10 @@ public final class GetExternalResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+     * 
+     */
     public List<String> programs() {
         return this.programs;
     }

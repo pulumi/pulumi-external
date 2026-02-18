@@ -18,9 +18,17 @@ public final class GetExternalArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetExternalArgs Empty = new GetExternalArgs();
 
+    /**
+     * A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+     * 
+     */
     @Import(name="programs", required=true)
     private Output<List<String>> programs;
 
+    /**
+     * @return A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+     * 
+     */
     public Output<List<String>> programs() {
         return this.programs;
     }
@@ -81,15 +89,33 @@ public final class GetExternalArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetExternalArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param programs A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder programs(Output<List<String>> programs) {
             $.programs = programs;
             return this;
         }
 
+        /**
+         * @param programs A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder programs(List<String> programs) {
             return programs(Output.of(programs));
         }
 
+        /**
+         * @param programs A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder programs(String... programs) {
             return programs(List.of(programs));
         }

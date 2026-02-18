@@ -11,6 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `getExternal` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+//
+// **Warning** This mechanism is provided as an "escape hatch" for exceptional situations where a first-class Terraform provider is not more appropriate. Its capabilities are limited in comparison to a true data source, and implementing a data source via an external program is likely to hurt the portability of your Terraform configuration by creating dependencies on external programs and libraries that may not be available (or may need to be used differently) on different operating systems.
+//
+// **Warning** Terraform Enterprise does not guarantee availability of any particular language runtimes or external programs beyond standard shell utilities, so it is not recommended to use this data source within configurations that are applied within Terraform Enterprise.
+//
+// ## Processing JSON in shell scripts
+//
+// Since the external data source protocol uses JSON, it is recommended to use
+// the utility [`jq`](https://stedolan.github.io/jq/) to translate to and from
+// JSON in a robust way when implementing a data source in a shell scripting
+// language.
+//
+// The following example shows some input/output boilerplate code for a
+// data source implemented in bash:
 func GetExternal(ctx *pulumi.Context, args *GetExternalArgs, opts ...pulumi.InvokeOption) (*GetExternalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExternalResult
@@ -23,6 +38,7 @@ func GetExternal(ctx *pulumi.Context, args *GetExternalArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getExternal.
 type GetExternalArgs struct {
+	// A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
 	Programs []string `pulumi:"programs"`
 	// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
 	Query map[string]string `pulumi:"query"`
@@ -33,7 +49,8 @@ type GetExternalArgs struct {
 // A collection of values returned by getExternal.
 type GetExternalResult struct {
 	// The id of the data source. This will always be set to `-`
-	Id       string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
 	Programs []string `pulumi:"programs"`
 	// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
 	Query map[string]string `pulumi:"query"`
@@ -54,6 +71,7 @@ func GetExternalOutput(ctx *pulumi.Context, args GetExternalOutputArgs, opts ...
 
 // A collection of arguments for invoking getExternal.
 type GetExternalOutputArgs struct {
+	// A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
 	Programs pulumi.StringArrayInput `pulumi:"programs"`
 	// A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
 	Query pulumi.StringMapInput `pulumi:"query"`
@@ -85,6 +103,7 @@ func (o GetExternalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of strings, whose first element is the program to run and whose subsequent elements are optional command line arguments to the program. Terraform does not execute the program through a shell, so it is not necessary to escape shell metacharacters nor add quotes around arguments containing spaces.
 func (o GetExternalResultOutput) Programs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExternalResult) []string { return v.Programs }).(pulumi.StringArrayOutput)
 }
