@@ -5,3 +5,4 @@
 [tools]
 "vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
 golangci-lint = "2.7.0"
+"aqua:gotestyourself/gotestsum" = "1.12.0"
