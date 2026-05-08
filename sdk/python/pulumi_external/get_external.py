@@ -136,9 +136,9 @@ def get_external(programs: Optional[Sequence[_builtins.str]] = None,
         query=pulumi.get(__ret__, 'query'),
         result=pulumi.get(__ret__, 'result'),
         working_dir=pulumi.get(__ret__, 'working_dir'))
-def get_external_output(programs: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                        query: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                        working_dir: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_external_output(programs: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                        query: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                        working_dir: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalResult]:
     """
     The `get_external` data source allows an external program implementing a specific protocol (defined below) to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
