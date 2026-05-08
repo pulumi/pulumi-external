@@ -110,9 +110,9 @@ export interface GetExternalOutputArgs {
     /**
      * A map of string values to pass to the external program as the query arguments. If not supplied, the program will receive an empty object as its input.
      */
-    query?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    query?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Working directory of the program. If not supplied, the program will run in the current directory.
      */
-    workingDir?: pulumi.Input<string>;
+    workingDir?: pulumi.Input<string | undefined>;
 }
