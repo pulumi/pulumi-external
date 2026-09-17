@@ -6,7 +6,7 @@ Subject: [PATCH] Add shim
 
 diff --git a/pulumi-shim/pf.go b/pulumi-shim/pf.go
 new file mode 100644
-index 0000000..b591c41
+index 000000000000..b591c4183707
 --- /dev/null
 +++ b/pulumi-shim/pf.go
 @@ -0,0 +1,10 @@
