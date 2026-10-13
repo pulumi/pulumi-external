@@ -1,3 +1,0 @@
-name: external
-description: A Pulumi resource provider for external.
-language: python
